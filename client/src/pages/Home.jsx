@@ -25,14 +25,6 @@ const Home = () => {
                       Start Mood Check
                     </Link>
                   </div>
-                  <div className="mt-3 sm:mt-0 sm:ml-3">
-                    <Link
-                      to="/how-it-works"
-                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-yellow-700 bg-yellow-100 hover:bg-yellow-200 md:py-4 md:text-lg md:px-10"
-                    >
-                      Learn More
-                    </Link>
-                  </div>
                 </div>
               </div>
             </main>
@@ -101,7 +93,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Company Info */}
             <div className="col-span-1 md:col-span-2">
-              <h3 className="text-xl font-bold text-white mb-4">HealthCare</h3>
+              <h3 className="text-xl font-bold text-white mb-4">Aura</h3>
               <p className="text-gray-400 mb-4">
                 Empowering individuals to take control of their mental well-being through innovative digital solutions.
               </p>
@@ -154,8 +146,8 @@ const Home = () => {
               <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">Contact</h3>
               <ul className="space-y-4">
                 <li className="text-base text-gray-300">
-                  <a href="mailto:support@healthcare.com" className="hover:text-yellow-500">
-                    support@healthcare.com
+                  <a href="mailto:support@aura.com" className="hover:text-yellow-500">
+                    support@aura.com
                   </a>
                 </li>
                 <li className="text-base text-gray-300">
@@ -169,7 +161,7 @@ const Home = () => {
 
           <div className="mt-8 border-t border-gray-700 pt-8">
             <p className="text-base text-gray-400 text-center">
-              © {new Date().getFullYear()} HealthCare. All rights reserved.
+              © {new Date().getFullYear()} Aura. All rights reserved.
             </p>
           </div>
         </div>

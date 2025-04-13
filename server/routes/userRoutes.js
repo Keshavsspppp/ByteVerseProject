@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const auth = require('../middleware/auth');
 
 // Register
 router.post('/register', async (req, res) => {
@@ -88,6 +89,32 @@ router.post('/login', async (req, res) => {
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Add this new route to userRoutes.js
+// Add auth middleware to the profile route
+router.put('/profile', auth, async (req, res) => {
+  try {
+    const token = req.headers.authorization.split(' ')[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decoded.id;
+
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      {
+        name: req.body.name,
+        email: req.body.email,
+        age: req.body.age,
+        gender: req.body.gender,
+        phone: req.body.phone
+      },
+      { new: true }
+    ).select('-password');
+
+    res.json({ user: updatedUser });
+  } catch (error) {
+    res.status(401).json({ message: 'Not authorized' });
   }
 });
 

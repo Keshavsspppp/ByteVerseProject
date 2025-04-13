@@ -6,6 +6,13 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token'));
 
+  // Add this new function
+  const updateUser = (userData) => {
+    setUser(userData);
+    // Optionally persist the updated user data
+    localStorage.setItem('user', JSON.stringify(userData));
+  };
+
   const register = async (name, email, password) => {
     try {
       const response = await fetch('http://localhost:5000/api/users/register', {
@@ -62,7 +69,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, login, register, logout }}>
+    <AuthContext.Provider value={{ user, token, login, register, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );
